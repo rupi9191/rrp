@@ -12,6 +12,9 @@ module.exports = function(app) {
 
     //referral api
     app.post('/api/referral/new', ensureAuthenticated, referralCtrl.newReferral);
+
+    //get JobLisiting api
+    app.get('/api/jobListing',ensureAuthenticated, userCtrl.getUsers);
 }
 
 /*
