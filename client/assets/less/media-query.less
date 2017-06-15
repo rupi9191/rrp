@@ -1,0 +1,78 @@
+// CSS style adjustments based on the device
+// by using the media query
+
+// large device only (1200px) and up
+@media (min-width: @screen-lg-min) {
+    .button-group-wrapper button:not(:last-child) {
+        margin-right: @padding-base - 10;
+    }
+}
+
+// small device and up
+@media (min-width: @screen-sm-min) {
+    .report-search-form-wrapper,
+    .button-group-wrapper {
+        padding: @padding-base - 5;
+    }
+    .table-responsive {
+        overflow: visible;
+    }
+    .form-inline {
+        .form-group {
+            margin-right: @margin-base / 2;
+        }
+        .divider-wrapper {
+            display: none;
+        }
+    }
+}
+
+// some adjustment for bigger device but not for smallest
+@media (min-width: @screen-xs-max) {
+    .navbar .navbar-nav>li.active {
+        &>a,
+        &>a:focus,
+        &>a:hover {
+            .navbar-active-arrow();
+        }
+    }
+}
+
+// some adjustment for smallest width of device
+@media (max-width: @screen-xs-max) {
+    .navbar-default .navbar-toggle {
+        border-color: @color-rakuten-light;
+        .icon-bar {
+            background-color: @color-rakuten-light;
+        }
+    }
+    .page-header .breadcrumb {
+        display: none;
+    }
+    a.back-to-top {
+        .hide;
+    }
+    .form-inline {
+        .form-group {
+            margin-right: auto;
+        }
+        .divider-wrapper {
+            display: none;
+        }
+    }
+    .table-responsive .dropdown-menu {
+        position: static !important;
+    }
+}
+
+// some adjustment for bigger device but not for smallest
+@media (min-width: @screen-md-min) {
+    .form-inline {
+        .form-group {
+            margin-right: @margin-base;
+        }
+        .divider-wrapper {
+            display: none;
+        }
+    }
+}

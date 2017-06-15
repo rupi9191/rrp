@@ -1,0 +1,217 @@
+/**
+ * This is following the official bootstrap non responsiveness guide:
+ *
+ * http://getbootstrap.com/examples/non-responsive/non-responsive.css
+ */
+
+
+// for non responsive
+body,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    min-width: @min-body-width;
+}
+
+/* Non-responsive overrides
+ *
+ * Utilize the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+.container {
+    width: @container-width;
+    max-width: none !important;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+    float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+    visibility: visible !important;
+}
+
+.navbar-toggle {
+    display: none;
+}
+.navbar-collapse {
+    border-top: 0;
+}
+.navbar-brand {
+    margin-left: -(@margin-base);
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+    float: left;
+    margin: 0;
+    &>li {
+        float: left;
+        &>a {
+            padding: @padding-base;
+        }
+    }
+    /* Redeclare since we override the float above */
+    & .navbar-right {
+        float: right;
+    }
+}
+
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    float: left;
+    background-color: @color-white;
+    border: 1px solid @color-white-gray-dark;
+    border-width: 0 1px 1px;
+    .border-radius(0 0 4px 4px);
+    .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: @color-black-gray-dark;
+}
+
+.navbar .navbar-nav .open .dropdown-menu > li {
+    &>a:hover,
+    &>a:focus,
+    &.active>a,
+    &.active>a:hover,
+    &.active>a:focus {
+        color: @color-white !important;
+        background-color: #428bca !important;
+    }
+    &.disabled>a,
+    &.disabled>a:hover,
+    &.disabled>a:focus {
+        color: @color-black-gray-light !important;
+        background-color: transparent !important;
+    }
+}
+
+// variable and mixins for undo forms
+@zero-value: 0;
+.inline-block-middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+.inline-table-middle {
+    display: inline-table;
+    vertical-align: middle;
+}
+.inline-table-middle-margin-top-bottom-zero {
+    display: inline-table;
+    vertical-align: middle;
+    margin-top: @zero-value;
+    margin-bottom: @zero-value;
+}
+.margin-bottom-zero-middle {
+    margin-bottom: @zero-value;
+    vertical-align: middle;
+}
+.margin-left-zero-relative {
+    margin-left: @zero-value;
+    position: relative;
+}
+
+/* Undo form expansion */
+.navbar-form {
+    float: left;
+    width: auto;
+    padding-top: @zero-value;
+    padding-bottom: @zero-value;
+    margin-right: @zero-value;
+    margin-left: @zero-value;
+    border: @zero-value;
+    .box-shadow(none);
+
+    & .form-group {
+        .inline-block-middle();
+        margin-bottom: @zero-value;
+    }
+    & .form-control {
+        .inline-block-middle();
+        width: auto;
+    }
+    & .form-control-static {
+        display: inline-block;
+    }
+    & .input-group {
+        .inline-table-middle();
+        & .input-group-addon,
+        & .input-group-btn,
+        & .form-control {
+            width: auto;
+        }
+        &>.form-control {
+            width: 100%;
+        }
+    }
+    & .control-label {
+        .margin-bottom-zero-middle();
+    }
+    & .radio,
+    & .checkbox {
+        .inline-table-middle-margin-top-bottom-zero();
+        & label {
+            padding-left: @zero-value;
+        }
+    }
+    & .radio input[type="radio"],
+    & .checkbox input[type="checkbox"] {
+        .margin-left-zero-relative();
+    }
+    & .has-feedback .form-control-feedback {
+        top: @zero-value;
+    }
+}
+
+/* Undo inline form compaction on small screens */
+.form-inline {
+    & .form-group {
+        margin-bottom: @zero-value;
+        .inline-block-middle();
+    }
+    & .form-control {
+        width: auto;
+        .inline-block-middle();
+    }
+    & .form-control-static {
+        display: inline-block;
+    }
+    & .input-group {
+        .inline-table-middle();
+        & .input-group-addon,
+        & .input-group-btn,
+        & .form-control {
+            width: auto;
+        }
+        &>.form-control {
+            width: 100%;
+        }
+    }
+    & .control-label {
+        .margin-bottom-zero-middle();
+    }
+    & .radio,
+    & .checkbox {
+        .inline-table-middle-margin-top-bottom-zero();
+        & label {
+            padding-left: @zero-value;
+        }
+    }
+    & .radio input[type="radio"],
+    & .checkbox input[type="checkbox"] {
+        .margin-left-zero-relative();
+    }
+    & .has-feedback .form-control-feedback {
+        top: @zero-value;
+    }
+}
