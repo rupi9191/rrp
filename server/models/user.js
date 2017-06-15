@@ -18,6 +18,9 @@ var UserSchema = mongoose.Schema({
     },
     lastName: {
         type: String
+    },
+    empType: {
+        type: Number
     }
 
 });
@@ -41,7 +44,7 @@ module.exports.getUserByEmail = function(email, callback){
 
 // module.exports.comparePassword = function(candidatePassword, hash, callback){
 //     bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
-//     // res == true 
+//     // res == true
 //         callback(null, isMatch);
 //     });
 // }
@@ -50,11 +53,11 @@ module.exports.createUser = function(newUser, callback) {
     bcrypt.genSalt(10, function(err, salt) {
         console.log("salt",salt);
         bcrypt.hash(newUser.password, salt, function(err, hash) {
-            // Store hash in your password DB. 
+            // Store hash in your password DB.
             console.log(hash);
             newUser.password = hash;
             newUser.save(callback);
         });
     });
-    
+
 }

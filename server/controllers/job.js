@@ -1,29 +1,37 @@
-var JobListing = require('../models/job');
+var Job = require('../models/job');
 
-var jobListing = {};
+var jobCtrl = {};
 
-jobListing.newJobListing = function(req, res) {
+jobCtrl.newJob = function(req, res) {
     const {
-        jobListing
+        skills,
+        name
     } = req.body;
-    console.log("refer:",req.user);
 
-    const newJobListing = new newJobListing({
-        referredBy: req.user,
-        referral: {
-            name: referral.name,
-            email: referral.email,
-            phone: referral.phone
-        }
+    const newJob = new Job({
+        createdBy: req.user,
+        skills: skills,
+        name
     });
 
-    Referral.createReferral(newReferral,function(err, referral){
+    Job.createJob(newJob,function(err, job){
         if (err) {
-             res.json({"error": "error saving referral"});
+             res.json({"error": "error saving Job"});
         } else {
-            res.json(referral);
+            res.json(job);
         }
     });
 };
+// Create endpoint /api/jobs
+jobCtrl.getJobs = function(req, res) {
+    Job.find(null,'-__v',function(err, jobs) {
+        if (err)
+        res.send(err);
 
-module.exports = referralCtrl;
+        res.json(jobs);
+    });
+
+};
+
+
+module.exports = jobCtrl;

@@ -28,6 +28,11 @@ export const api = (function() {
     // this to serve response/error handling across application
     instance.interceptors.response.use(response => {
         // for say, validation message(s)
+        if (Array.isArray(response.data) &&
+          response.data.length &&
+          response.data.hasOwnProperty('errors')) {
+          return dispatchReject(response.data);
+        }
         return response;
     }, error => {
           dispatchReject(error);

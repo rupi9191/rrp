@@ -33,9 +33,16 @@ class RegisterComponent extends Component {
                     </FormGroup>
                     <FormGroup>
                         <FormControl
-                            type="text"
+                            type="password"
                             name="password"
                             placeholder="Password"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormControl
+                            type="text"
+                            name="username"
+                            placeholder="Username"
                         />
                     </FormGroup>
                     <FormGroup>

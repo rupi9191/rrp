@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { FullPane } from '../components/HOC';
 import LoginComponent from '../components/registration/login'
+import * as registrationActions from '../actions/registration';
 
 class LoginContainer extends Component {
 
@@ -22,8 +23,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
+    const combinedActionCreators = Object.assign(
+        {},
+        registrationActions
+    );
 
+    return {
+        actions: bindActionCreators(combinedActionCreators, dispatch)
     };
 };
 

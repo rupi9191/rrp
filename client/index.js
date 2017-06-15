@@ -8,7 +8,7 @@ import { createHashHistory } from 'history';
 import App from './containers/App';
 import Home from './containers/Home';
 import Login from './containers/Login'
-import Registration from './containers/Registration'
+import Registration from './containers/Registration';
 import store from './store';
 
 const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
@@ -21,6 +21,7 @@ const init = () => {
                     <Route path="/register" component={Registration}>
                     </Route>
                     <Route path="/home" component={App}>
+                        <IndexRoute component={Home} />
                         {/*<Route path="/merchants/:action(/:id)" component={Merchant} />*/}
                     </Route>
                 </Route>

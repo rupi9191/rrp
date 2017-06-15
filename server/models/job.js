@@ -2,49 +2,18 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
 //Job Listing Schema
-var JobListingSchema = mongoose.Schema({
-    jobId: {
-        type: String,
-        index: true
-    },
-    jobName: {
+var JobSchema = mongoose.Schema({
+    name: {
         type: String
     },
     createdBy: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' 
     },
-    createdDate: {
-        type: Date
-    },
-    updatedBy: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    },
-    updatedDate: {
-        type: Date
-    },
-    startDate: {
-        type: Date
-    },
-    endDate: {
-        type: Date
-    },
-    jobType: {
-          name: String
-    },
-    skills: {
-          id: String,
-          name: String,
-          category: String
-    },
-    media: {
-          url: String,
-          isInternal: String
-    }
-    point:{
-        type:String
-    }
-    reward:{
-        type:Long
-    }
+    skills:[{type: String}]
 });
-var JobListing = module.exports = mongoose.model('JobListing',JobListingSchema);
+var JobListing = module.exports = mongoose.model('Jobs',JobSchema);
+module.exports.createJob =  function(newJob, callback) {
+    console.log(newReferral);
+    newJob.save(callback);
+}

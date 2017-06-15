@@ -1,5 +1,6 @@
 var userCtrl = require('./controllers/user');
 var referralCtrl = require('./controllers/referral');
+var jobCtrl = require('./controllers/job');
 var config = require('./config/config');
 var moment = require('moment');
 var jwt = require('jwt-simple');
@@ -12,9 +13,11 @@ module.exports = function(app) {
 
     //referral api
     app.post('/api/referral/new', ensureAuthenticated, referralCtrl.newReferral);
+    app.get('/api/referrals',ensureAuthenticated, referralCtrl.getReferrals);
 
     //get JobLisiting api
-    app.get('/api/jobListing',ensureAuthenticated, userCtrl.getUsers);
+    //app.get('/api/jobs',ensureAuthenticated, jobCtrl.getJobs);
+    app.post('/api/job/new', ensureAuthenticated, jobCtrl.newJob)
 }
 
 /*

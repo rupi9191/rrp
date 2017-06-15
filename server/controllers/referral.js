@@ -26,4 +26,15 @@ referralCtrl.newReferral = function(req, res) {
     });
 };
 
+// Create endpoint /api/jobs
+referralCtrl.getReferrals = function(req, res) {
+    Referral.find(null,'-__v',function(err, referrals) {
+        if (err)
+        res.send(err);
+
+        res.json(referrals);
+    });
+
+};
+
 module.exports = referralCtrl;

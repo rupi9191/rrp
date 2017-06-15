@@ -13,20 +13,33 @@ class LoginComponent extends Component {
         super();
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        const filters = serialize(e.target, { hash: true });
+
+        this.props.actions.doLogin(filters)
+        .then((res) => {
+            if (res.token){
+                window.localStorage.setItem('authorization', res.token);
+            }
+            window.location.href = '#/home';
+        });
+    }
+
     render() {
         return (
             <div className="loginContainer">
-              <form className="loginForm" onSubmit={this.handleSubmit}>
+              <form className="loginForm" onSubmit={::this.handleSubmit}>
                     <FormGroup>
                         <FormControl
-                            type="text"
+                            type="email"
                             name="email"
-                            placeholder="UserName"
+                            placeholder="Email"
                         />
                     </FormGroup>
                     <FormGroup>
                         <FormControl
-                            type="text"
+                            type="password"
                             name="password"
                             placeholder="Password"
                         />

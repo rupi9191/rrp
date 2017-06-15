@@ -208,7 +208,7 @@ export const FullPane = ({ content = '', ...props }) => {
 export const LeftPane = ({ content = '', ...props }) => {
     return (
         <Col md={8} className="left-pane-wrapper">
-            {content}
+            {props.children}
         </Col>
     );
 };
@@ -222,7 +222,7 @@ export const LeftPane = ({ content = '', ...props }) => {
 export const RightPane = ({ content = '', ...props }) => {
     return (
         <Col md={4} className="right-pane-wrapper">
-            {content}
+            {props.children}
         </Col>
     );
 };
